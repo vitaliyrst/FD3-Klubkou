@@ -15,32 +15,35 @@ let FilterWords = React.createClass({
             searchedText: '',
             isSorted: false,
             words: this.props.words,
-        }
+        };
     },
 
-    sortWords: function (eo) {
-        let isChecked = eo.target.checked;
-        let newWords = this.props.words.concat();
-
-        let sortedWords = (isChecked) ?
-            newWords.sort((a, b) => a.word > b.word ? 1 : a.word < b.word ? -1 : 0) :
-            this.props.words;
-
-        this.setState({isSorted: isChecked, words: sortedWords});
+    checkSort: function (eo) {
+        this.setState({isSorted: eo.target.checked}, this.getFilterWords);
     },
 
-    searchWords: function (eo) {
-        let letter = eo.target.value;
+    checkSearch: function (eo) {
+        this.setState({searchedText: eo.target.value}, this.getFilterWords);
+    },
 
-        let searchedWords = (letter) ?
-            this.props.words.filter((item) => item.word.includes(letter)) :
-            this.props.words;
+    getFilterWords: function () {
+        let searchedText = this.state.searchedText;
+        let isSorted = this.state.isSorted;
 
-        this.setState({searchedText: letter, words: searchedWords});
+        let wordsArray = this.props.words.concat();
+
+        wordsArray = (searchedText) ?
+            wordsArray.filter((item) => item.word.includes(searchedText)) :
+            wordsArray;
+
+        wordsArray = (isSorted) ?
+            wordsArray.sort((next, prev) => next.word > prev.word ? 1 : next.word < prev.word ? -1 : 0) :
+            wordsArray;
+
+        this.setState({words: wordsArray}, null);
     },
 
     resetFilter: function (eo) {
-        console.log('Reset', eo.target);
         this.setState({searchedText: '', isSorted: false, words: this.props.words}, null);
     },
 
@@ -51,10 +54,10 @@ let FilterWords = React.createClass({
 
         let menu = React.DOM.div({className: 'Menu'},
             React.DOM.input({
-                className: 'Menu Sort', type: 'checkbox', checked: this.state.isSorted, onClick: this.sortWords
+                className: 'Menu Sort', type: 'checkbox', checked: this.state.isSorted, onClick: this.checkSort
             }),
             React.DOM.input({
-                className: 'Menu Search', type: 'text', value: this.state.searchedText, onChange: this.searchWords
+                className: 'Menu Search', type: 'text', value: this.state.searchedText, onChange: this.checkSearch
             }),
             React.DOM.button({className: 'Menu Reset', type: 'button', onClick: this.resetFilter}, 'Сброс'),
         );
