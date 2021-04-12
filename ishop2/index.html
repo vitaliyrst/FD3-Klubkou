@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iShop</title>
+    <link rel="stylesheet" href="Shop.css">
+    <link rel="stylesheet" href="Product.css">
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+</head>
+<body>
+<div class="container">
+
+</div>
+<script src="Shop.js"></script>
+<script src="Product.js"></script>
+<script>
+    let shopName = 'iShop';
+    let booksArray = [
+        {
+            title: 'Код да Винчи', author: 'Дэн Браун', year: 2013, price: 33.54, quantity: 3, code : 1,
+            url: 'https://s4-goods.ozstatic.by/2000/66/266/10/10266066_0.jpg'
+        },
+        {
+            title: 'Ангелы и демоны', author: 'Дэн Браун', year: 2013, price: 32.72, quantity: 1, code : 2,
+            url: 'https://s4-goods.ozstatic.by/2000/117/10/1/1010117_0.jpg'
+        },
+        {
+            title: 'Цветы для Элджернона', author: 'Дэниел Киз', year: 2016, price: 16.36, quantity: 7, code : 3,
+            url: 'https://s5-goods.ozstatic.by/2000/128/237/10/10237128_0.jpg'
+        },
+        {
+            title: 'Происхождение', author: 'Дэн Браун', year: 2017, price: 32.57, quantity: 1, code : 4,
+            url: 'https://s3-goods.ozstatic.by/2000/125/542/10/10542125_0.jpg'
+        },
+        {
+            title: 'Инферно', author: 'Дэн Браун', year: 2018, price: 13.76, quantity: 3, code : 5,
+            url: 'https://s1-goods.ozstatic.by/2000/600/334/10/10334600_0.jpg'
+        },
+        {
+            title: 'Тревожные люди', author: 'Фредрик Бакман', year: 2020, price: 27.09, quantity: 5, code : 6,
+            url: 'https://s5-goods.ozstatic.by/2000/259/965/10/10965259_0.jpg'
+        },
+    ];
+
+    ReactDOM.render(
+        React.createElement(Shop, {shopName : shopName,books: booksArray}),
+        document.querySelector('.container')
+    );
+</script>
+</body>
+</html>
