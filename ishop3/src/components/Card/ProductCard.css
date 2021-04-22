@@ -1,0 +1,17 @@
+.product_card {
+    max-width: 400px;
+    height: max-content;
+    margin-left: 2vw;
+    padding: 10px;
+
+    border: 3px solid #2f4f4f;
+    border-radius: 10px;
+}
+
+.product_card_title {
+    margin-top: 0;
+}
+
+.product_card_price {
+    font-weight: bold;
+}

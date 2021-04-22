@@ -1,0 +1,86 @@
+.product_edit_form {
+    width: 400px;
+    margin-left: 2vw;
+
+    border: 3px solid #2f4f4f;
+    border-radius: 10px;
+}
+
+.product_edit_info {
+    box-sizing: border-box;
+    padding: 20px 20px 0 20px;
+}
+
+.product_edit_info label {
+    display: block;
+    margin-bottom: 5px;
+
+    color: #395870;
+    font-weight: bold;
+}
+
+.product_edit_info input {
+    box-sizing: border-box;
+
+    width: 100%;
+    padding: 5px;
+
+    border: 2px solid #5f9ea0;
+    border-radius: 10px;
+
+    color: #636466;
+}
+
+.product_edit_info textarea {
+    box-sizing: border-box;
+
+    width: 100%;
+    padding: 5px;
+
+    border: 2px solid #5f9ea0;
+    border-radius: 10px 0  0 10px;
+
+    resize: none;
+}
+
+.product_edit_info input:hover,
+.product_edit_info textarea:hover {
+    background: white;
+    color: black;
+}
+
+.product_edit_info input:focus,
+.product_edit_info textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.product_edit_button {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+.product_edit_button button {
+    width: 150px;
+    height: 30px;
+    margin-top: 20px;
+
+    border: 2px solid #2f4f4f;
+    border-radius: 10px;
+
+    color: black;
+    outline: none;
+    cursor: pointer;
+}
+
+.product_edit_button button:hover {
+    background: #2f4f4f;
+    color: white;
+}
+
+.product_edit_button button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}

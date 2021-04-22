@@ -1,0 +1,65 @@
+.main_shop_table_container {
+    width: 800px;
+    min-width: 800px;
+}
+
+.shop_table {
+    border-collapse: collapse;
+    border-left: 3px solid #2f4f4f;
+    border-right: 3px solid #2f4f4f;
+    border-bottom: 3px solid #2f4f4f;
+}
+
+.shop_table_caption {
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    background: #2f4f4f;
+    color: white;
+
+    font-size: 26px;
+    text-align: center;
+}
+
+.shop_table td,
+.shop_table th {
+    box-sizing: border-box;
+
+    width: 120px;
+    padding: 10px;
+
+    text-align: center;
+}
+
+.shop_table th {
+    text-align: center;
+    font-size: 18px;
+}
+
+.shop_table tr:nth-child(2n) {
+    background: #e5e5e5;
+}
+
+.shop_table_button_add {
+    width: 150px;
+    height: 30px;
+    margin-top: 20px;
+
+    border: 2px solid #2f4f4f;
+    border-radius: 10px;
+
+    color: black;
+    outline: none;
+    cursor: pointer;
+}
+
+.shop_table_button_add:hover {
+    background: #2f4f4f;
+    color: white;
+}
+
+.shop_table_button_add:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}

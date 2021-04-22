@@ -1,0 +1,36 @@
+.product_image {
+    width: 35px;
+    height: 60px;
+
+    display: inline-block;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.product_edit,
+.product_remove {
+    width: 70px;
+    height: 30px;
+    margin-top: 20px;
+
+    border: 2px solid #2f4f4f;
+    border-radius: 10px;
+
+    color: black;
+    outline: none;
+    cursor: pointer;
+}
+
+.product_edit:hover,
+.product_remove:hover {
+    background: #2f4f4f;
+    color: white;
+}
+
+.product_edit:focus,
+.product_remove:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}
