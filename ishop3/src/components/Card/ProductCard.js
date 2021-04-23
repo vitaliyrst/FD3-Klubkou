@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ProductCard.css';
 
 class ProductCard extends React.Component {
@@ -16,11 +17,16 @@ class ProductCard extends React.Component {
                     {this.props.item.description}
                 </p>
                 <span className='product_card_price'>
-                        Price: {this.props.item.price}
-                    </span>
+                    Price: {this.props.item.price}
+                </span>
             </div>
         );
     }
 }
+
+ProductCard.propTypes = {
+    item: PropTypes.object.isRequired,
+    selected: PropTypes.number.isRequired
+};
 
 export default ProductCard;

@@ -11,13 +11,12 @@ class ProductTable extends React.Component {
     }
 
     handleAdd() {
-        this.props.onAdd();
+        this.props.onSetForm(null, 'add');
     }
 
     handleRemove(id, title) {
         if (confirm(`Вы хотите удалить ${title.toUpperCase()}?`)) {
-            let filtered = this.state.items.filter(item => item.id !== id);
-            this.setState({items: filtered});
+            this.props.onRemove(id);
         }
     }
 
@@ -33,9 +32,10 @@ class ProductTable extends React.Component {
                 price={item.price}
                 quantity={item.quantity}
                 onClickSelect={this.props.onSelected}
-                onClickEdit={this.props.onEdit}
-                onClickRemove={this.handleRemove}
+                onSetForm={this.props.onSetForm}
                 selected={this.props.selected === item.id}
+                onClickRemove={this.handleRemove}
+                inProcess={this.props.inProcess}
             />
         );
     }
@@ -47,7 +47,6 @@ class ProductTable extends React.Component {
                     className='shop_table_button_add'
                     type='button'
                     onClick={this.handleAdd}
-                    action={'add'}
                 >
                     Add new product
                 </button>
@@ -86,8 +85,11 @@ class ProductTable extends React.Component {
 }
 
 ProductTable.propTypes = {
+    inProcess: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     items: PropTypes.array.isRequired,
+    onRemove: PropTypes.func.isRequired,
+    onSelected: PropTypes.func.isRequired,
 };
 
 export default ProductTable;

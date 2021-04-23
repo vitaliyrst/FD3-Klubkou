@@ -1,5 +1,6 @@
 .product_card {
-    max-width: 400px;
+    min-width: 400px;
+    width: 400px;
     height: max-content;
     margin-left: 2vw;
     padding: 10px;

@@ -11,18 +11,18 @@ class Product extends React.Component {
     }
 
     handleSelect() {
-        this.props.onClickSelect(this.props.id);
+        this.props.inProcess || this.props.onClickSelect(this.props.id);
     }
 
     handleEdit(eo) {
         eo.stopPropagation();
-        this.props.onClickEdit(this.props.id);
+        this.props.onSetForm(this.props.id, 'edit');
     }
 
-    handleRemove() {
+    handleRemove(eo) {
+        eo.stopPropagation();
         this.props.onClickRemove(this.props.id, this.props.title);
     }
-
 
     render() {
         return (
@@ -41,12 +41,24 @@ class Product extends React.Component {
                 <td>{this.props.price}</td>
                 <td>{this.props.quantity}</td>
                 <td>
-                    <button className='product_edit' type='button' value={this.props.id} onClick={this.handleEdit}>
+                    <button
+                        className='product_edit'
+                        type='button'
+                        disabled={this.props.inProcess}
+                        value={this.props.id}
+                        onClick={this.handleEdit}
+                    >
                         Edit
                     </button>
                 </td>
                 <td>
-                    <button className='product_remove' type='button' value={this.props.id} onClick={this.handleRemove}>
+                    <button
+                        className='product_remove'
+                        type='button'
+                        disabled={this.props.inProcess}
+                        value={this.props.id}
+                        onClick={this.handleRemove}
+                    >
                         Remove
                     </button>
                 </td>
@@ -64,9 +76,9 @@ Product.propTypes = {
     price: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
     onClickSelect: PropTypes.func.isRequired,
-    onClickEdit: PropTypes.func.isRequired,
+    onSetForm: PropTypes.func.isRequired,
     onClickRemove: PropTypes.func.isRequired,
     selected: PropTypes.bool,
-}
+};
 
 export default Product;

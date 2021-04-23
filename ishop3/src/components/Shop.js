@@ -8,77 +8,90 @@ import ProductForm from "./Forms/ProductForm";
 class Shop extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {selected: null, form: null, itemInfo: null, books: this.props.books};
+        this.state = {
+            items: this.props.items.concat(),
+            form: null,
+            selected: null,
+            itemInfo: null,
+            inProcess: false
+        };
         this.handleSelect = this.handleSelect.bind(this);
-        this.handleAdd = this.handleAdd.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
+        this.handleSetForm = this.handleSetForm.bind(this);
         this.handleSave = this.handleSave.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
+        this.handleChanges = this.handleChanges.bind(this);
+        this.getNextId = this.getNextId.bind(this);
     }
 
     handleSelect(id) {
-        this.setState(() => ({selected: id, itemInfo: id, form: null}));
+        this.setState(() => ({form: null, selected: id, itemInfo: id}));
     }
 
-    handleAdd() {
-        this.setState(() => ({form: 'add', itemInfo: null, selected: null}));
+    handleSetForm(id, action) {
+        this.setState(() => ({form: action, selected: id, itemInfo: null, inProcess: (action !== 'edit')}));
     }
 
-    handleEdit(id) {
-        this.setState(() => ({form: 'edit', itemInfo: null, selected: id}));
-    }
+    handleSave(data) {
+        let items;
 
-    handleSave(data, addBook) {
-        if (!addBook) {
-            let books = this.state.books.map((book) => {
-                return book.id === data.id ? data : book;
+        if (this.state.form === 'edit') {
+            items = this.state.items.map((item) => {
+                return (item.id === data.id) ? data : item;
             });
-
-            this.setState({books: books});
         } else {
-            let books = this.state.books;
-            books.push(data);
-            this.setState({books: books});
+            items = this.state.items;
+            items.push(data);
+            this.setState({items: items});
         }
+
+        this.setState({items: items, form: null, selected: data.id, itemInfo: data.id, inProcess: false});
     }
 
     handleCancel() {
-        this.setState({form: null});
+        this.setState({form: null, itemInfo: this.state.selected, inProcess: false});
+    }
+
+    handleRemove(id) {
+        const filtered = this.state.items.filter(item => item.id !== id);
+        this.setState({items: filtered, selected: null, itemInfo: null});
     }
 
     getForm() {
-        if (this.state.form === 'add') {
-            let id = this.state.books.length;
+        if (this.state.form) {
             return (
                 <ProductForm
-                    item={''}
-                    id={id}
+                    item={this.state.items[this.state.selected] || ''}
+                    id={this.state.selected || this.getNextId()}
+                    disabled={(this.state.form === 'add')}
+                    inProcess={this.state.inProcess}
                     onSave={this.handleSave}
                     onCancel={this.handleCancel}
-                />
-            );
-        } else if (this.state.form === 'edit') {
-            return (
-                <ProductForm
-                    item={this.state.books[this.state.selected]}
-                    onSave={this.handleSave}
-                    onCancel={this.handleCancel}
+                    onChanges={this.handleChanges}
                 />
             );
         }
         return null;
     }
 
+    getNextId() {
+        return (this.state.form === 'add') ? this.state.items.length : this.state.selected;
+    }
+
     getProductCard() {
-        if (this.state.selected !== null && this.state.form === null) {
+        if (this.state.itemInfo !== null) {
             return (
                 <ProductCard
-                    item={this.state.books[this.state.selected]}
+                    item={this.state.items[this.state.selected]}
                     selected={this.state.itemInfo}
                 />
             );
         }
         return null;
+    }
+
+    handleChanges() {
+        this.setState({inProcess: true});
     }
 
     render() {
@@ -89,12 +102,13 @@ class Shop extends React.Component {
             <div className='main_shop_container'>
                 <ProductTable
                     title={this.props.title}
-                    items={this.state.books}
+                    items={this.state.items}
                     selected={this.state.selected}
+                    inProcess={this.state.inProcess}
                     form={this.state.form}
+                    onRemove={this.handleRemove}
                     onSelected={this.handleSelect}
-                    onEdit={this.handleEdit}
-                    onAdd={this.handleAdd}
+                    onSetForm={this.handleSetForm}
                 />
                 {productCard}
                 {form}
@@ -105,7 +119,7 @@ class Shop extends React.Component {
 
 Shop.propTypes = {
     title: PropTypes.string.isRequired,
-    books: PropTypes.array.isRequired,
-}
+    items: PropTypes.array.isRequired,
+};
 
 export default Shop;

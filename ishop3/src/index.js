@@ -4,6 +4,6 @@ import books from './books.json';
 import Shop from './components/Shop';
 
 ReactDOM.render(
-    <Shop title='iShop' books={books}/>,
+    <Shop title='iShop' items={books}/>,
     document.querySelector("#root")
 );

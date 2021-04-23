@@ -34,3 +34,9 @@
     outline: none;
     box-shadow: 0 0 0 4px #cbd6ee;
 }
+
+.product_edit:disabled,
+.product_remove:disabled{
+    background-color: gray;
+    color: black;
+}

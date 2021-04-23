@@ -1,4 +1,4 @@
-.product_edit_form {
+.product_form_container {
     width: 400px;
     margin-left: 2vw;
 
@@ -6,20 +6,21 @@
     border-radius: 10px;
 }
 
-.product_edit_info {
+.product_form_group {
     box-sizing: border-box;
-    padding: 20px 20px 0 20px;
+    position: relative;
+    padding: 30px 20px 0 20px;
 }
 
-.product_edit_info label {
+.product_form_group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 
     color: #395870;
     font-weight: bold;
 }
 
-.product_edit_info input {
+.product_form_group input {
     box-sizing: border-box;
 
     width: 100%;
@@ -31,41 +32,41 @@
     color: #636466;
 }
 
-.product_edit_info textarea {
+.product_form_group textarea {
     box-sizing: border-box;
 
     width: 100%;
     padding: 5px;
 
     border: 2px solid #5f9ea0;
-    border-radius: 10px 0  0 10px;
+    border-radius: 10px 0 0 10px;
 
     resize: none;
 }
 
-.product_edit_info input:hover,
-.product_edit_info textarea:hover {
+.product_form_group input:hover,
+.product_form_group textarea:hover {
     background: white;
     color: black;
 }
 
-.product_edit_info input:focus,
-.product_edit_info textarea:focus {
+.product_form_group input:focus,
+.product_form_group textarea:focus {
     outline: none;
     box-shadow: 0 0 0 4px #cbd6ee;
 }
 
-.product_edit_button {
+.product_form_button {
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
     justify-content: space-around;
 }
 
-.product_edit_button button {
+.product_form_button button {
     width: 150px;
     height: 30px;
-    margin-top: 20px;
+    margin-top: 30px;
 
     border: 2px solid #2f4f4f;
     border-radius: 10px;
@@ -75,12 +76,30 @@
     cursor: pointer;
 }
 
-.product_edit_button button:hover {
+.product_form_button button:hover {
     background: #2f4f4f;
     color: white;
 }
 
-.product_edit_button button:focus {
+.product_form_button button:focus {
     outline: none;
     box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.product_form_button button:disabled{
+    background-color: gray;
+    color: black;
+}
+
+.product_form_error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -18px;
 }
