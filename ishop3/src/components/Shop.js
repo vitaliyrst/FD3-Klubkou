@@ -9,7 +9,7 @@ class Shop extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: this.props.items.concat(),
+            items: this.props.items,
             form: null,
             selected: null,
             itemInfo: null,
