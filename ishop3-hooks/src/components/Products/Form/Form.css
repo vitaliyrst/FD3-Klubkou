@@ -1,0 +1,101 @@
+.product_form_container {
+    border: 3px solid #000000;
+    border-radius: 20px;
+}
+
+.product_form_group {
+    position: relative;
+    padding: 30px 20px 0 20px;
+}
+
+.product_form_group label {
+    display: block;
+    margin-bottom: 2px;
+
+    color: #395870;
+    font-weight: bold;
+}
+
+.product_form_group input {
+    box-sizing: border-box;
+
+    width: 100%;
+    padding: 5px;
+
+    border: 2px solid #000000;
+    border-radius: 10px;
+
+    color: #000000;
+}
+
+.product_form_group textarea {
+    box-sizing: border-box;
+
+    width: 100%;
+    padding: 5px;
+
+    border: 2px solid #000000;
+    border-radius: 10px 0 0 10px;
+
+    resize: none;
+}
+
+.product_form_group input:hover,
+.product_form_group textarea:hover {
+    background: white;
+    color: #636466;
+}
+
+.product_form_group input:focus,
+.product_form_group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.product_form_button {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+.product_form_button button {
+    width: 120px;
+    height: 30px;
+    margin-top: 30px;
+
+    border: 2px solid #000000;
+    border-radius: 10px;
+
+    background-color: #000000;
+    color: #ffffff;
+    outline: none;
+    cursor: pointer;
+}
+
+.product_form_button button:hover {
+    color: #f1356d;
+}
+
+.product_form_button button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #f1356d;
+}
+
+.product_form_button button:disabled{
+    background-color: #2a2929;
+    color: #8b8b8b;
+}
+
+.product_form_error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -18px;
+}

@@ -1,0 +1,45 @@
+.product_image {
+    width: 35px;
+    height: 60px;
+
+    display: inline-block;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.product_edit,
+.product_remove {
+    width: 70px;
+    height: 30px;
+
+    border: 2px solid #000000;
+    border-radius: 10px;
+
+    background-color: #000000;
+    color: #ffffff;
+
+    font: inherit;
+    font-size: 14px;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.product_edit:hover,
+.product_remove:hover {
+    color: #f1356d;
+}
+
+.product_edit:focus,
+.product_remove:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #f1356d;
+}
+
+.product_edit:disabled,
+.product_remove:disabled {
+    background-color: #2a2929;
+    color: #8b8b8b;
+}
