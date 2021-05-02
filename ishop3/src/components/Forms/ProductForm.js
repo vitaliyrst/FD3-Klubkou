@@ -126,6 +126,7 @@ class ProductForm extends React.Component {
             validFields: {...validFields},
             disabled: Object.keys(validFields).some(item => validFields[item] === false)
         }));
+        console.log(this.state.validFields)
     }
 
     handleSave() {
