@@ -82,7 +82,6 @@ function Products() {
 
     function handleRemove(id) {
         const filtered = products.filter(item => item.id !== id);
-        console.log(filtered)
         setProducts(filtered);
         setSelected(null);
         setCard(null)

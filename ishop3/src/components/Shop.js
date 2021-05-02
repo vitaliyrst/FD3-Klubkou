@@ -25,11 +25,11 @@ class Shop extends React.Component {
     }
 
     handleSelect(id) {
-        this.setState(() => ({form: null, selected: id, itemInfo: id}));
+        this.setState({form: null, selected: id, itemInfo: id});
     }
 
     handleSetForm(id, action) {
-        this.setState(() => ({form: action, selected: id, itemInfo: null, inProcess: (action !== 'edit')}));
+        this.setState({form: action, selected: id, itemInfo: null, inProcess: (action !== 'edit')});
     }
 
     handleSave(data) {
@@ -54,14 +54,14 @@ class Shop extends React.Component {
 
     handleRemove(id) {
         const filtered = this.state.items.filter(item => item.id !== id);
-        this.setState({items: filtered, selected: null, itemInfo: null});
+        this.setState({items: filtered, selected: null, itemInfo: null, form: null});
     }
 
     getForm() {
         if (this.state.form) {
             return (
                 <ProductForm
-                    item={this.state.items[this.state.selected] || ''}
+                    item={this.state.items.find(item => this.state.selected === item.id) || ''}
                     id={this.state.selected || this.getNextId()}
                     disabled={(this.state.form === 'add')}
                     inProcess={this.state.inProcess}
@@ -82,7 +82,7 @@ class Shop extends React.Component {
         if (this.state.itemInfo !== null) {
             return (
                 <ProductCard
-                    item={this.state.items[this.state.selected]}
+                    item={this.state.items.find(item => this.state.selected === item.id)}
                     selected={this.state.itemInfo}
                 />
             );
