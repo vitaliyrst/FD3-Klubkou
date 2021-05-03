@@ -41,8 +41,24 @@
       "type": "CATEGORY",
       "children": [
         {
-          "name": "Солярис.pdf",
-          "type": "ITEM"
+          "name": "Фентези",
+          "type": "CATEGORY",
+          "children": [
+            {
+              "name": "Властелин колец.pdf",
+              "type": "ITEM"
+            }
+          ]
+        },
+        {
+          "name": "Научная фантастика",
+          "type": "CATEGORY",
+          "children": [
+            {
+              "name": "Солярис.pdf",
+              "type": "ITEM"
+            }
+          ]
         }
       ]
     }

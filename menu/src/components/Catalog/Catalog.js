@@ -4,16 +4,9 @@ import Category from "./Category/Category";
 import Item from "./Item/Item";
 
 function Catalog(props) {
-    /*const [activeCategory, setActiveCategory] = useState(null);*/
+    const [items, setItems] = useState([]);
 
-    const categoryRender = (name, onSetActiveCategory) => (
-        <li className='catalog_category' onClick={onSetActiveCategory}>{name}</li>
-    );
-
-    const itemRender = (id, name) => <li className='item' key={id} >{name}</li>
-
-
-    /*const handleSetActiveCategory = (id) => setActiveCategory(id);*/
+    const handleSetItems = (items) => setItems(items);
 
     return (
         <div className='main_catalog_container'>
@@ -21,17 +14,16 @@ function Catalog(props) {
                 <ul>
                     <Category
                         key={'0'}
-                        code={'0'}
                         name={props.items.name}
                         children={props.items.children}
-                      /*  activeCategory={activeCategory}
-                        onSetActiveCategory={handleSetActiveCategory}*/
-                        categoryRender={categoryRender}
-                        itemRender={itemRender}
+                        onSetItems={handleSetItems}
                     />
                 </ul>
             </div>
             <div className='items_container'>
+                <ul>
+                    {items.length > 0 && <Item items={items}/>}
+                </ul>
             </div>
         </div>
     );
