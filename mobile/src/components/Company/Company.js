@@ -26,13 +26,19 @@ class Company extends React.PureComponent {
 
     handleSave = (data) => {
         if (this.state.form === 'add') {
-            data.id = this.state.clients.length + 1;
+            data.id = this.getMaxId();
             const newClients = [...this.state.clients, data];
             this.setState({clients: newClients, form: null});
         } else {
             const editedClients = this.state.clients.map(client => (client.id === data.id) ? data : client);
             this.setState({clients: editedClients, form: null, client: {}});
         }
+    }
+
+    getMaxId = () => {
+        let max = 0;
+        this.state.clients.forEach(item => (item.id >= max) ? max = item.id : null);
+        return max += 1;
     }
 
     handleCancel = () => this.setState({form: null, client: {}});
@@ -60,10 +66,10 @@ class Company extends React.PureComponent {
                     <input type='button' value='MTC' onClick={() => this.handleSetCompany('MTC')}/>
                     <h2>Компания: {this.state.name}</h2>
                 </div>
-                <div>
+                <div className='filter'>
                     <input type='button' value='Все' onClick={() => this.handleSetStatus('all')}/>
-                    <input type='button' value='Активные' onClick={() => this.handleSetStatus('active')}/>
-                    <input type='button' value='Заблокированные' onClick={() => this.handleSetStatus('blocked')}/>
+                    <input  type='button' value='Активные' onClick={() => this.handleSetStatus('active')}/>
+                    <input  type='button' value='Заблокированные' onClick={() => this.handleSetStatus('blocked')}/>
                 </div>
                 <div>
                     <table>

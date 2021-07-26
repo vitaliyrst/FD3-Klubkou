@@ -3,7 +3,7 @@ import "./Category.css";
 
 function Category(props) {
     const [active, setActive] = useState(false);
-
+    console.log(props)
     const nodesCategory = props.children.filter(item => item.type === 'CATEGORY');
     const nodesItem = props.children.filter(item => item.type === 'ITEM');
 
@@ -35,7 +35,9 @@ function Category(props) {
             <li
                 className={props.children.length === 0 ? 'catalog_category' :
                     active ? 'catalog_category down' : 'catalog_category right'}
-                onClick={handleClicked}>{props.name}
+                onClick={handleClicked}
+            >
+                {props.name}
             </li>
             {active && nodesCategory.length > 0 && getChildren()}
         </>
