@@ -95,7 +95,7 @@ class ScalesStorageEngineLocalStorage implements IStorageEngine {
     ) {
     }
 
-    private getLocalStorageItems(): Array<Product> {
+    private getLocalStorageItems(): Array<any> {
         return localStorage.getItem(this.localStorageKey) ?
             JSON.parse(localStorage.getItem(this.localStorageKey)) :
             [];
@@ -115,7 +115,7 @@ class ScalesStorageEngineLocalStorage implements IStorageEngine {
     }
 
     getItem(index: number): Product {
-        const items = <any>this.getLocalStorageItems();
+        const items = this.getLocalStorageItems();
 
         return new Product(items[index].title, items[index].weight);
     }
