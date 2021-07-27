@@ -1,14 +1,24 @@
-class Product {
-    protected title: string;
-    protected weight: number;
+interface IScalable {
+    getTitle(): string;
 
+    getScale(): number;
+}
+
+class Product {
+    constructor(
+        protected title: string,
+        protected weight: number
+    ) {
+    }
+}
+
+class Tomato extends Product implements IScalable {
     constructor(title: string, weight: number) {
-        this.title = title;
-        this.weight = weight;
+        super(title, weight);
     }
 
-    public getTitle(): string {
-        return this.title;
+    public getTitle = (): string => {
+        return `tomato ${this.title}`;
     }
 
     public getScale(): number {
@@ -16,41 +26,36 @@ class Product {
     }
 }
 
-class Tomato extends Product {
+class Apple extends Product implements IScalable {
     constructor(title: string, weight: number) {
         super(title, weight);
     }
 
     public getTitle = (): string => {
-        super.getTitle();
-        return `tomato ${this.title}`;
-    }
-}
-
-class Apple extends Product {
-    constructor(title: string, weight: number) {
-        super(title, weight);
-    }
-
-    public getTitle = (): string => {
-        super.getTitle();
         return `apple ${this.title}`;
+    }
+
+    public getScale(): number {
+        return this.weight;
     }
 }
 
 class Scales {
-    private products: Array<Product> = [];
+    constructor(
+        private products: Array<IScalable> = []
+    ) {
+    }
 
-    public add(...products: Array<Product>): void {
-        products.forEach((product: Product) => this.products.push(product));
+    public add(...products: Array<IScalable>): void {
+        products.forEach((product: IScalable) => this.products.push(product));
     }
 
     public getSumScale(): number {
-        return this.products.reduce((acc: number, product: Product) => acc + product.getScale(), 0);
+        return this.products.reduce((acc: number, product: IScalable) => acc + product.getScale(), 0);
     }
 
     public getTitleList(): Array<string> {
-        return this.products.map((product: Product) => product.getTitle());
+        return this.products.map((product: IScalable) => product.getTitle());
     }
 }
 
