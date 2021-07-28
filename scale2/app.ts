@@ -4,17 +4,11 @@ interface IScalable {
     getScale(): number;
 }
 
-class Product {
+class Tomato implements IScalable {
     constructor(
-        protected title: string,
-        protected weight: number
+        private title: string,
+        private weight: number
     ) {
-    }
-}
-
-class Tomato extends Product implements IScalable {
-    constructor(title: string, weight: number) {
-        super(title, weight);
     }
 
     public getTitle = (): string => {
@@ -26,9 +20,11 @@ class Tomato extends Product implements IScalable {
     }
 }
 
-class Apple extends Product implements IScalable {
-    constructor(title: string, weight: number) {
-        super(title, weight);
+class Apple implements IScalable {
+    constructor(
+        private title: string,
+        private weight: number
+    ) {
     }
 
     public getTitle = (): string => {
