@@ -1,53 +1,31 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var Product = /** @class */ (function () {
-    function Product(title, weight) {
+var Tomato = /** @class */ (function () {
+    function Tomato(title, weight) {
+        var _this = this;
         this.title = title;
         this.weight = weight;
-    }
-    return Product;
-}());
-var Tomato = /** @class */ (function (_super) {
-    __extends(Tomato, _super);
-    function Tomato(title, weight) {
-        var _this = _super.call(this, title, weight) || this;
-        _this.getTitle = function () {
+        this.getTitle = function () {
             return "tomato " + _this.title;
         };
-        return _this;
     }
     Tomato.prototype.getScale = function () {
         return this.weight;
     };
     return Tomato;
-}(Product));
-var Apple = /** @class */ (function (_super) {
-    __extends(Apple, _super);
+}());
+var Apple = /** @class */ (function () {
     function Apple(title, weight) {
-        var _this = _super.call(this, title, weight) || this;
-        _this.getTitle = function () {
+        var _this = this;
+        this.title = title;
+        this.weight = weight;
+        this.getTitle = function () {
             return "apple " + _this.title;
         };
-        return _this;
     }
     Apple.prototype.getScale = function () {
         return this.weight;
     };
     return Apple;
-}(Product));
+}());
 var Scales = /** @class */ (function () {
     function Scales(products) {
         if (products === void 0) { products = []; }
