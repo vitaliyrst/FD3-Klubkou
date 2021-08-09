@@ -1,0 +1,5 @@
+<div>
+  Введите количество яблок:
+  <input type="number" #apples (input)="false">
+  <div>У Вас {{apples.value|numword:'яблоко':'яблока':'яблок'}}</div>
+</div>
