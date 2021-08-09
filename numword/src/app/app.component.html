@@ -1,5 +1,5 @@
 <div>
   Введите количество яблок:
-  <input type="number" #apples (input)="false">
+  <input type="number" value="0" #apples (input)="false">
   <div>У Вас {{apples.value|numword:'яблоко':'яблока':'яблок'}}</div>
 </div>

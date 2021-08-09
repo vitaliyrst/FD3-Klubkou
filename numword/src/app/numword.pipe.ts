@@ -9,19 +9,19 @@ export class NumwordPipe implements PipeTransform {
     const step1 = Number(value) % 100;
 
     if (step1 >= 11 && step1 <= 19) {
-      return value + word3;
+      return value + ' ' + word3;
     }
 
     const step2 = Number(value) % 10;
 
     if (step2 == 1) {
-      return value + word1;
+      return value + ' ' + word1;
     }
 
     if (step2 >= 2 && step2 <= 4) {
-      return value + word2;
+      return value + ' ' + word2;
     }
 
-    return value + word3;
+    return value + ' ' + word3;
   }
 }
