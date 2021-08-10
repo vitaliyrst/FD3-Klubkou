@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class="title">{{getTitle()}}</h2>
+
+  <label for="quantity">Введите количество мест: </label>
+  <input class="quantity" type="number" id="quantity" [(ngModel)]="quantity">
+
+  <input class="buy" type="button" value="Купить" [disabled]="quantity <= 0" (click)="buyTickets()">
+  <span>{{purchaseMessage}}</span>
+  <span style="margin-top: 25px" *ngIf="boughtPlaces.length">Номера мест: {{boughtPlaces}}</span>
+</div>

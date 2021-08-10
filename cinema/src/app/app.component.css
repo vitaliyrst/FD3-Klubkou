@@ -1,0 +1,20 @@
+main {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.hall_wrapper {
+  width: 100%;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.cash_wrapper {
+  width: 100%;
+  margin-top: 100px;
+
+  display: flex;
+  justify-content: space-evenly;
+}
