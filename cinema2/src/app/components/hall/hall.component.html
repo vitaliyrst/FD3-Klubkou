@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Зал №1</h2>
+
+  <div class="place_free">Свободные места:
+    <div></div>
+  </div>
+  <div class="place_busy">Занятые места:
+    <div></div>
+  </div>
+
+  <div class="places_wrapper">
+    <div [ngClass]="place ? 'free' : 'busy'" *ngFor="let place of getPlaces(); let i = index">{{i + 1}}</div>
+  </div>
+</div>
