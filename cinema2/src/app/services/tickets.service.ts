@@ -42,7 +42,7 @@ export class TicketsService {
     let tempArrayBoughtPlaces = [];
     this.transaction = false;
 
-    if (this.freePlaces > quantity) {
+    if (this.freePlaces >= quantity) {
       for (let i = 0; i < this.busyPlaces.length; i++) {
         if (this.busyPlaces[i] && checkCount !== quantity) {
           this.busyPlaces[i] = false;
